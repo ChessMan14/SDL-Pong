@@ -20,4 +20,4 @@ Controls:
   On linux use build.sh to build
 <br>
 <br>
-  Note: You must have the SDL library installed for both windows and linux
+  Note: You must have the SDL2 library installed along with SDL_Image and SDL_ttf for both windows and linux.
