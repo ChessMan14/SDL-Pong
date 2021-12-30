@@ -17,7 +17,7 @@ Controls:
 <br>
 <br>
   On windows use build.bat to build
-  On linux use build.sh to build
+  On linux cd into the install directory and type "make"
 <br>
 <br>
   Note: You must have the SDL2 library installed along with SDL_Image and SDL_ttf for both windows and linux.
