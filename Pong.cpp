@@ -63,15 +63,15 @@ static bool within_5(int x, int y) {
 
 void init(SDL_Window*& window, SDL_Surface*& screen_surface, SDL_Renderer*& renderer) {
     SDL_Init(SDL_INIT_EVERYTHING);
-    SDL_DisplayMode DM;
+	window = SDL_CreateWindow(NULL, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 0, 0, SDL_WINDOW_SHOWN | SDL_WINDOW_FULLSCREEN | SDL_WINDOW_ALLOW_HIGHDPI);
+	SDL_DisplayMode DM;
 	SDL_GetCurrentDisplayMode(0, &DM);
 	window_width = DM.w;
 	window_height = DM.h;
 	window_center.x = round(window_width/2);
 	window_center.y = round(window_height/2);
-	window = SDL_CreateWindow(NULL, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, window_width, window_height, SDL_WINDOW_SHOWN | SDL_WINDOW_FULLSCREEN | SDL_WINDOW_ALLOW_HIGHDPI);
-	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 	IMG_Init(IMG_INIT_PNG);
 	TTF_Init();
 	screen_surface = SDL_GetWindowSurface(window);
@@ -256,8 +256,6 @@ void load_text(std::string text, SDL_Renderer*& renderer, SDL_Texture*& texture,
 	position.w = surfaceMessage->w;
 	position.h = surfaceMessage->h;
 	
-	std::cout << position.h << std::endl;
-	
 	SDL_FreeSurface(surfaceMessage);
 	surfaceMessage = NULL;
 	
@@ -313,7 +311,7 @@ int main(int argc, char* argv[]) {
 	SDL_Rect number_position_2;
 	SDL_Rect display_text_position;
 	SDL_Texture* victory_text;
-
+	
 	init(*&window, *&screen_surface, *&renderer);
 	
 	Ball ball = (*&renderer);
